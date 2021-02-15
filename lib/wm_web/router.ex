@@ -5,8 +5,10 @@ defmodule WmWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", WmWeb do
+  scope "/", WmWeb do
     pipe_through :api
+
+    post "/", IndexController, :index
   end
 
   # Enables LiveDashboard only for development
@@ -19,7 +21,7 @@ defmodule WmWeb.Router do
   if Mix.env() in [:dev, :test] do
     import Phoenix.LiveDashboard.Router
 
-    scope "/" do
+    scope "/admin" do
       pipe_through [:fetch_session, :protect_from_forgery]
       live_dashboard "/dashboard", metrics: WmWeb.Telemetry
     end

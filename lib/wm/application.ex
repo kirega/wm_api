@@ -8,7 +8,7 @@ defmodule Wm.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      Wm.Repo,
+      # Wm.Repo,
       # Start the Telemetry supervisor
       WmWeb.Telemetry,
       # Start the PubSub system

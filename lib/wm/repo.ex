@@ -3,3 +3,4 @@ defmodule Wm.Repo do
     otp_app: :wm,
     adapter: Ecto.Adapters.Postgres
 end
+
