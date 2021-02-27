@@ -14,7 +14,9 @@ defmodule Wm.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Wm.PubSub},
       # Start the Endpoint (http/https)
-      WmWeb.Endpoint
+      WmWeb.Endpoint,
+      {Task.Supervisor, name: Wm.TaskSupervisor},
+      {Task, fn -> KVServer.accept(4040) end}
       # Start a worker by calling: Wm.Worker.start_link(arg)
       # {Wm.Worker, arg}
     ]
