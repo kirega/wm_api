@@ -16,7 +16,7 @@ defmodule Wm.Application do
       # Start the Endpoint (http/https)
       WmWeb.Endpoint,
       {Task.Supervisor, name: Wm.TaskSupervisor},
-      {Task, fn -> KVServer.accept(4040) end}
+      {Task, fn -> KVServer.accept(4000) end}
       # Start a worker by calling: Wm.Worker.start_link(arg)
       # {Wm.Worker, arg}
     ]

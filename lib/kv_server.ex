@@ -16,7 +16,6 @@ defmodule KVServer do
     loop_acceptor(socket)
   end
 
-
   defp loop_acceptor(socket) do
     {:ok, client} = :gen_tcp.accept(socket)
     {:ok, pid} = Task.Supervisor.start_child(Wm.TaskSupervisor, fn -> serve(client) end)
@@ -35,6 +34,7 @@ defmodule KVServer do
   defp read_line(socket) do
     case :gen_tcp.recv(socket, 0) do
       {:ok, data} ->
+        IO.inspect(data, label: "data received")
         data
 
       error ->
